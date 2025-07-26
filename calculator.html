@@ -1,0 +1,144 @@
+ 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Calculator by Ayan</title>
+  <style>
+    body {
+      background: #f3f4f6;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    #calculator {
+      background: #ffffff;
+      border-radius: 15px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      padding: 20px;
+      width: 280px;
+    }
+
+    #calculator h2 {
+      text-align: center;
+      margin-bottom: 15px;
+      color: #111827;
+    }
+
+    #display {
+      width: 100%;
+      height: 50px;
+      font-size: 22px;
+      margin-bottom: 15px;
+      text-align: right;
+      padding-right: 10px;
+      border: none;
+      border-radius: 8px;
+      background-color: #f0f0f0;
+    }
+
+    .btn {
+      width: 60px;
+      height: 50px;
+      margin: 5px;
+      font-size: 20px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .btn:hover {
+      background-color: #d1d5db;
+    }
+
+    .btn.operator {
+      background-color: #facc15;
+    }
+
+    .btn.equal {
+      background-color: #4ade80;
+      color: #fff;
+    }
+
+    .btn.clear {
+      background-color: #f87171;
+      color: #fff;
+    }
+
+    .btn.back {
+      background-color: #a78bfa;
+      color: #fff;
+    }
+
+    .row {
+      display: flex;
+      justify-content: center;
+    }
+  </style>
+</head>
+<body>
+  <div id="calculator">
+    <h2>Calculator by Ayan</h2>
+    <input type="text" id="display" readonly />
+
+    <div class="row">
+      <button class="btn clear" onclick="clearDisplay()">C</button>
+      <button class="btn back" onclick="backspace()">⌫</button>
+      <button class="btn operator" onclick="press('%')">%</button>
+      <button class="btn operator" onclick="press('/')">/</button>
+    </div>
+    <div class="row">
+      <button class="btn" onclick="press('7')">7</button>
+      <button class="btn" onclick="press('8')">8</button>
+      <button class="btn" onclick="press('9')">9</button>
+      <button class="btn operator" onclick="press('*')">*</button>
+    </div>
+    <div class="row">
+      <button class="btn" onclick="press('4')">4</button>
+      <button class="btn" onclick="press('5')">5</button>
+      <button class="btn" onclick="press('6')">6</button>
+      <button class="btn operator" onclick="press('-')">-</button>
+    </div>
+    <div class="row">
+      <button class="btn" onclick="press('1')">1</button>
+      <button class="btn" onclick="press('2')">2</button>
+      <button class="btn" onclick="press('3')">3</button>
+      <button class="btn operator" onclick="press('+')">+</button>
+    </div>
+    <div class="row">
+      <button class="btn" onclick="press('0')">0</button>
+      <button class="btn" onclick="press('.')">.</button>
+      <button class="btn equal" style="width: 130px;" onclick="calculate()">=</button>
+    </div>
+  </div>
+
+  <script>
+    let display = document.getElementById("display");
+
+    function press(val) {
+      display.value += val;
+    }
+
+    function clearDisplay() {
+      display.value = "";
+    }
+
+    function backspace() {
+      display.value = display.value.slice(0, -1);
+    }
+
+    function calculate() {
+      try {
+        display.value = eval(display.value);
+      } catch (err) {
+        display.value = "Error";
+      }
+    }
+  </script>
+</body>
+</html>
